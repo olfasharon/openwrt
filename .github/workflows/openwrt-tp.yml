@@ -28,13 +28,12 @@ jobs:
     steps:
       - name: Checkout
       - user: actions/checkout@openwrt-18.06
+        with:
+          ref: openwrt-18.06
         -name: Run a multi-line script
         run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     # - uses: actions/checkout@v2
-    # Runs a single command using the runners shell
-   
-    # Runs a set of commands using the runners shell
+     # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
