@@ -27,7 +27,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
-        uses: actions/checkout@openwrt-18.06
+        #uses: actions/checkout@openwrt-18.06
+        uses: actions/checkout@v2
         with:
           ref: openwrt-18.06
       - name: Space cleanup
@@ -59,6 +60,9 @@ jobs:
           touch ./.config
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'hello')
       - name: Make download
         run: |
           make download -j8
