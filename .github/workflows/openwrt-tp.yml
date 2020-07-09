@@ -54,7 +54,7 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       - name: Run a multi-line script
-          run:echo hello, world!
+        run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
      # Runs a set of commands using the runners shell
       - name: Run a multi-line script
