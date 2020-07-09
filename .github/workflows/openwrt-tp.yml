@@ -5,6 +5,16 @@ name: CI
 on:
   push:
     branches: openwrt-18.06
+env:
+  #REPO_URL: https://github.com/coolsnowwolf/lede
+  #REPO_URL: https://github.com/openwrt/openwrt
+  #REPO_BRANCH: master
+  #CONFIG_FILE: .config
+  #DIY_SH: diy.sh
+  #FREE_UP_DISK: false
+  SSH_ACTIONS: ture
+  #UPLOAD_BIN_DIR: false
+  #UPLOAD_FIRMWARE: true 
 #  pull_request:
 #    branches: [ master ]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
