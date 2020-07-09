@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Checkout
    #   - name: Checkout
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
@@ -38,6 +39,6 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: SSH connection to Actions
-      uses: P3TERX/debugger-action@master
-      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'hello')
+#      uses: P3TERX/debugger-action@master
+#      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'hello')
 
