@@ -11,10 +11,10 @@ env:
   #REPO_BRANCH: master
   #CONFIG_FILE: .config
   #DIY_SH: diy.sh
-  #FREE_UP_DISK: false
+  FREE_UP_DISK: false
   SSH_ACTIONS: true
-  #UPLOAD_BIN_DIR: false
-  #UPLOAD_FIRMWARE: true 
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true 
 #  pull_request:
 #    branches: [ master ]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -27,7 +27,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
-      - user: actions/checkout@openwrt-18.06
+      - users: actions/checkout@openwrt-18.06
         with:
           ref: openwrt-18.06
       - name: Space cleanup
@@ -75,9 +75,11 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
-      # - name: Prepare artifact
-      #   run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
-
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt firmware
+          path: ./bin/
       - name: Run a multi-line script
         run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
