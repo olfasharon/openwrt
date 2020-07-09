@@ -49,6 +49,10 @@ jobs:
           # ln -s /mnt/openwrt/feeds ./feeds
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
           df -h
+       - name: Update feeds
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
         -name: Run a multi-line script
         run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
