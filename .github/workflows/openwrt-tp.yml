@@ -53,6 +53,31 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+      - name: Generate configuration file
+        run: |
+          rm -f ./.config*
+          touch ./.config
+          sed -i 's/^[ \t]*//g' ./.config
+          make defconfig
+      - name: Make download
+        run: |
+          make download -j8
+          find ./dl/ -size -1024c -exec rm -f {} \;
+          df -h
+      - name: Compile firmware
+        run: |
+          make -j$(nproc) || make -j1 V=s
+          echo "======================="
+          echo "Space usage:"
+          echo "======================="
+          df -h
+          echo "======================="
+          du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
+          du -h --max-depth=1 ./build_dir
+          du -h --max-depth=1 ./bin
+      # - name: Prepare artifact
+      #   run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
+
       - name: Run a multi-line script
         run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
