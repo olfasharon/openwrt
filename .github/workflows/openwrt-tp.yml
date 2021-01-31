@@ -98,6 +98,8 @@ jobs:
         with:
           name: OpenWrt firmware
           path: ./bin/
+          
+#
 #      - name: Run a multi-line script
 #        run: echo hello, world!
      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
