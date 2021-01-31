@@ -60,11 +60,11 @@ jobs:
         run: | 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-      - name: Generate configuration file
-        run: |
-           rm -f ./.config*
-           touch ./.config
-           make defconfig        
+#      - name: Generate configuration file
+#        run: |
+#           rm -f ./.config*
+#           touch ./.config
+#           make defconfig        
 #          sed -i 's/^[ \t]*//g' ./.config
 #        make defconfig    
       - name: SSH connection to Actions
@@ -100,16 +100,3 @@ jobs:
           name: OpenWrt firmware
           path: ./bin/
           
-#
-#      - name: Run a multi-line script
-#        run: echo hello, world!
-     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     # Runs a set of commands using the runners shell
-#      - name: Run a multi-line script
-#        run: |
-#          echo Add other actions to build,
-#          echo test, and deploy your project.
-#      - name: SSH connection to Actions
-#      uses: P3TERX/debugger-action@master
-#      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'hello')
-
