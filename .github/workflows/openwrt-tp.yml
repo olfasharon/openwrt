@@ -66,8 +66,7 @@ jobs:
            touch ./.config
            make defconfig        
 #          sed -i 's/^[ \t]*//g' ./.config
-#        make defconfig
-#     
+#        make defconfig    
      - name: SSH connection to Actions
         uses: P3TERX/debugger-action@main
         if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'SSH')
