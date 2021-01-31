@@ -68,7 +68,9 @@ jobs:
 #          sed -i 's/^[ \t]*//g' ./.config
 #        make defconfig    
      - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@main
+#        uses: P3TERX/debugger-action@main
+        uses: be-engineer/debugger-action
+        uses: csexton/debugger-action@master
         if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'SSH')
       - name: Make download
         run: |
