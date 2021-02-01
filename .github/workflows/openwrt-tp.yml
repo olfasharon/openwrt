@@ -60,11 +60,11 @@ jobs:
         run: | 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-#      - name: Generate configuration file
-#        run: |
-#           rm -f ./.config*
-#           touch ./.config
-#           make defconfig        
+      - name: Generate configuration file
+        run: |
+           rm -f ./.config*
+           touch ./.config
+           make defconfig        
 #          sed -i 's/^[ \t]*//g' ./.config
 #        make defconfig    
       - name: SSH connection to Actions
